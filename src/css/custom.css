@@ -59,7 +59,13 @@
 .navbar {
   backdrop-filter: saturate(160%) blur(12px);
   border-bottom: 1px solid var(--ifm-toc-border-color);
-   /* height: 40px;   add this line */
+}
+/* On mobile the slide-in drawer lives inside .navbar; backdrop-filter would make
+   .navbar the containing block and clip the drawer to header height. Disable it. */
+@media (max-width: 996px) {
+  .navbar {
+    backdrop-filter: none;
+  }
 }
 .navbar__title {
   font-family: var(--ifm-heading-font-family);
@@ -69,6 +75,15 @@
 .navbar__link {
   font-weight: 500;
   font-size: 0.92rem;
+}
+
+/* ---------- Navbar logo size ---------- */
+.navbar__logo {
+  height: 44px;
+}
+.navbar__logo img {
+  height: 100%;
+  width: auto;
 }
 
 /* ---------- Headings: tight display type, h1 with proof-mark rule ---------- */
@@ -94,9 +109,9 @@ h1, h2, h3 {
 }
 
 /* ---------- Sidebar: quiet labels, confident active state ---------- */
-.menu {
+.theme-doc-sidebar-menu {
   font-size: 0.88rem;
-  padding: 0.75rem !important;
+  padding: 0.75rem;
 }
 .menu__list-item-collapsible > .menu__link,
 .menu__list-item-collapsible > .menu__link--sublist {
@@ -182,15 +197,19 @@ blockquote {
   border-top: 1px solid #243329;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .card, .card:hover { transition: none; transform: none; }
+/* ---------- Mobile: keep the menu toggle visible and well-placed ---------- */
+@media (max-width: 996px) {
+  .navbar__toggle {
+    display: inline-flex !important;
+    align-items: center;
+    margin-right: 0.5rem;
+    order: -1;
+  }
+  .navbar__items--right {
+    flex-shrink: 0;
+  }
 }
 
-/* ---------- Navbar logo size ---------- */
-.navbar__logo {
-  height: 44px;
-}
-.navbar__logo img {
-  height: 100%;
-  width: auto;
+@media (prefers-reduced-motion: reduce) {
+  .card, .card:hover { transition: none; transform: none; }
 }
