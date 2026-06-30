@@ -5,6 +5,9 @@ import { themes as prismThemes } from 'prism-react-renderer';
 const config = {
   title: 'Kakr Labs Documentation',
   tagline: 'Cryptographic proof of authority — for humans and AI agents.',
+  customFields: {
+    gaMeasurementId: 'G-1653V7W1ZT',
+  },
   favicon: 'favicon.ico',
   headTags: [
     { tagName: 'link', attributes: { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' } },
@@ -27,6 +30,19 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        docsRouteBasePath: '/docs',
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -76,6 +92,7 @@ const config = {
       footer: {
         style: 'dark',
         links: [
+
           {
             title: 'Documentation',
             items: [
@@ -99,6 +116,7 @@ const config = {
                 href: 'https://github.com/RITWIZSINGH/Kakrlabs_documentation',
               },
               { label: 'pteri.org', href: 'https://www.pteri.org' },
+              { label: 'Privacy Policy', to: '/privacy-policy' },
             ],
           },
         ],
